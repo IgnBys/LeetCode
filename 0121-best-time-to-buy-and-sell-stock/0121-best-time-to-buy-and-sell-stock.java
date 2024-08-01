@@ -15,11 +15,6 @@ class Solution {
                 profit = prices[max_index] - prices[min_index];
             }
         }
-        if(profit > 0){
-            return profit;
-        }
-        else{
-            return 0;
-        }
+        return profit;
     }
 }
