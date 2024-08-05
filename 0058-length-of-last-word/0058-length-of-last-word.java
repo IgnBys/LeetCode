@@ -1,19 +1,14 @@
 class Solution {
     public int lengthOfLastWord(String s) {
         int sum = 0;
-        int help_sum = 0;
-        char space =' ';
-        for (char letter: s.toCharArray()) {
-            if (space==' ' && letter != space){
-                help_sum++;
-                if (help_sum == 1){
-                    sum=0;
-                }
+        boolean check = false;
+        for (int i=s.length()-1; i>=0; i--) {
+            if (s.charAt(i)!=' '){
                 sum++;
+                check = true;
             }
-            else if(letter == space){
-                help_sum =0;
-                space = letter;
+            else if(check == true){
+                break;
             }
         }
         return sum;
