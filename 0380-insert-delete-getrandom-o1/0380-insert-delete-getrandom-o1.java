@@ -1,7 +1,9 @@
 class RandomizedSet {
     public List<Integer> list;
+    public Random random;
     public RandomizedSet() {
         list = new ArrayList<>();
+        random = new Random();
     }
     
     public boolean insert(int val) {
@@ -27,8 +29,7 @@ if(list.stream().filter(s -> {
     }
     
     public int getRandom() {
-         Random rand = new Random();
-        return list.get(rand.nextInt(list.size()));
+        return list.get(random.nextInt(list.size()));
     }
 }
 
