@@ -9,26 +9,30 @@ class RandomizedSet {
     }
     
     public boolean insert(int val) {
-        if(list.stream().filter(s -> {
-        return s==val;}).findAny().orElse(null)!=null){
+        if(map.containsKey(val)){
             return false;
         }
-        else{
+        else {
+            map.put(val,list.size());
             list.add(val);
             return true;
         }
     }
     
     public boolean remove(int val) {
-if(list.stream().filter(s -> {
-        return s==val;}).findAny().orElse(null)==null){
-    return false;
-}
-        else{
-              list.remove(Integer.valueOf(val));
+        if(map.containsKey(val)){
+            int index = map.get(val);
+            int last_element = list.get(list.size()-1);
+            list.set(index, last_element);
+            map.put(last_element, index);
+            list.remove(list.size()-1);
+            map.remove(val);
             return true;
         }
-        
+        else{
+            return false;
+        }
+
     }
     
     public int getRandom() {
