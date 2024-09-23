@@ -1,13 +1,16 @@
 class RandomizedSet {
     public List<Integer> list;
     public Random random;
+    public Map<Integer, Integer> map;
     public RandomizedSet() {
         list = new ArrayList<>();
         random = new Random();
+        map = new HashMap();
     }
     
     public boolean insert(int val) {
-        if(list.contains(val)){
+        if(list.stream().filter(s -> {
+        return s==val;}).findAny().orElse(null)!=null){
             return false;
         }
         else{
